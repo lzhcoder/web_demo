@@ -29,7 +29,7 @@ public class MyFreeMarker {
 	/**
 	 * 模板文件的存放路径，这里是存放在项目根目录下的ftls文件夹中
 	 */
-	public static final String FTLS_PATH = "ftls";
+	public static final String FTLS_PATH = "/ftls";
 
 	public static final String MESSAGE = "message";
 	public static final String HELLO_WORLD = "Hello World!";
@@ -38,7 +38,7 @@ public class MyFreeMarker {
 
 	// bean
 	public static final String BEAN = "bean";
-	public static final String BEAN_URL = "com.b510.bean";
+	public static final String BEAN_URL = "com.bean";
 
 	// annotation
 	public static final String ANNOTATION = "annotation";
@@ -96,7 +96,7 @@ public class MyFreeMarker {
 	public static void myJavaFile(String path, String packageUrl, String ftlFile) throws Exception {
 		// 创建Freemarker配置实例
 		configuration = new Configuration();
-		configuration.setDirectoryForTemplateLoading(new File(path));
+		configuration.setDirectoryForTemplateLoading(new File(System.getProperty("user.dir") + "/src/main/java" +path+"/"));
 
 		// 创建数据模型
 		Map<String, Object> root = new HashMap<String, Object>();
@@ -117,13 +117,13 @@ public class MyFreeMarker {
 		// 加载模板文件
 		template = configuration.getTemplate(ftlFile);
 
-		String beanPath = System.getProperty("user.dir") + "/src/" + packageUrl.replace(".", "/") + "/";
+		String beanPath = System.getProperty("user.dir") + "/src/main/java/" + packageUrl.replace(".", "/") + "/";
 		File filePath = new File(beanPath);
 		if (!filePath.exists()) {
 			filePath.mkdirs();
 		}
 
-		String filePathOfBean = beanPath + "/User.java";
+		String filePathOfBean =  beanPath + "/User.java";
 		File file = new File(filePathOfBean);
 		if (!file.exists()) {
 			file.createNewFile();

@@ -1,14 +1,14 @@
-package com.bean;
+package ${bean.beanUrl};
 
 import java.util.Date;
 
 /**
- * @author hongten(hongtenzone@foxmail.com)<br>
- * @date 2016-08-03
+ * @author ${annotation.authorName}(${annotation.authorMail})<br>
+ * @date ${annotation.date}
  * 
- * @version 1.0
+ * @version ${annotation.version}
  */
-public class User {
+public class ${bean.name} {
 
 	/**
 	 * id号
