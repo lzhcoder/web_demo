@@ -8,7 +8,7 @@ import java.nio.channels.SocketChannel;
 public class TCPEchoClientNonblocking {
 	public static void main(String args[]) throws Exception{
 		//第一个参数作为要连接的服务端的主机名或IP
-		String server = "localhost"; 
+		String server = "127.0.0.1"; 
 		//第二个参数为要发送到服务端的字符串
 		byte[] argument = "nihaopengyou".getBytes();
 		//如果有第三个参数，则作为端口号，如果没有，则端口号设为7
