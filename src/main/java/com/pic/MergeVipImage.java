@@ -12,6 +12,7 @@ import com.sun.image.codec.jpeg.JPEGCodec;
 import com.sun.image.codec.jpeg.JPEGImageEncoder;
 
 public class MergeVipImage {
+	
 	public static void main(String[] args){
         try {
             
