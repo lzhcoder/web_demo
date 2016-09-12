@@ -201,9 +201,9 @@ public class WriteToImage {
         BufferedImage d = tt.loadImageLocal("D:\\mm.jpg");  
 //      BufferedImage b = tt  
 //              .loadImageLocal("E:\\文件(word,excel,pdf,ppt.txt)\\zte-logo.png");  
-         tt.writeImageLocal("D:\\cc.jpg",tt.modifyImage(d,"明明",90,90)  
+         tt.writeImageLocal("D:\\cc.jpg",tt.modifyImage(d,"明明",90,90)); 
         //往图片上写文件  
-         );  
+         
   
         //tt.writeImageLocal("D:\\cc.jpg", tt.modifyImagetogeter(b, d));  
         //将多张图片合在一起  

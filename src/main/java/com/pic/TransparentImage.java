@@ -1,30 +1,14 @@
 package com.pic;
 
-import gui.ava.html.image.generator.HtmlImageGenerator;
-
-import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Transparency;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 
 import javax.imageio.ImageIO;
 
-import org.apache.http.client.HttpClient;
-import org.apache.http.impl.client.DefaultHttpClient;
-
-import com.sun.image.codec.jpeg.JPEGCodec;
-import com.sun.image.codec.jpeg.JPEGImageEncoder;
-import com.util.HttpUtils;
-
-public class HtmlToImage {
-	 
+public class TransparentImage {
 	/**
 	* 填充图片为png格式，填充部分为透明色
 	* @param srcImage 源文件
@@ -58,26 +42,15 @@ public class HtmlToImage {
 		return true;
 	}
 
-	
-	    public static void main(String[] args) {
-	    	
-	        try {
-	        	
-		    	HttpClient client =  new DefaultHttpClient();  
-	            
-		    	String html = HttpUtils.getHtml(client,"http://localhost/btkjsite_designcloud/before/kindeditorContent?designid=28");
-	            //1图片的大小会比原网页设计偏大
-		    	//2输出格式必须为png否则背景颜色会有偏差
-	            String outFileImagePath = "D:/Test.png";
-	           
-	            HtmlImageGenerator imageGenerator = new HtmlImageGenerator();
-	            imageGenerator.loadHtml(html);
-	            imageGenerator.saveAsImage(outFileImagePath);
-	            
- 
-	            
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        }
-	    }
+
+	// 方法调用
+	public static void main(final String[] args) {
+		BufferedImage srcImage;
+		try {
+			srcImage = ImageIO.read(new File("d:/TransparentImage.jpg"));
+			reduceImage_scale(srcImage, new File("d:/TransparentImage.png"), "png", 388, 388);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }

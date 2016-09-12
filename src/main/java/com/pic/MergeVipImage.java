@@ -25,6 +25,8 @@ public class MergeVipImage {
                     Graphics g=image.getGraphics();
                     g.drawImage(image2,image.getWidth()-image2.getWidth()-100,image.getHeight()-image2.getHeight()-100,image2.getWidth(),image2.getHeight(),null);
                     OutputStream outImage=new FileOutputStream("D:\\systemAvatar.jpg");
+                   
+                    //jpg图片输出
                     JPEGImageEncoder enc=JPEGCodec.createJPEGEncoder(outImage);
                     enc.encode(image);
                     imagein.close();
