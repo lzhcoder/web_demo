@@ -8,7 +8,8 @@ import gui.ava.html.link.LinkInfo;
 import java.awt.Color;
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
-import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Insets;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.beans.PropertyChangeEvent;
@@ -159,11 +160,12 @@ public class HtmlImageGenerator {
 	}
 
 	public BufferedImage getBufferedImage() {
+		
+		editorPane.setMargin(new Insets(0, 0, 0, 0));
 		Dimension prefSize = this.editorPane.getPreferredSize();
 		BufferedImage img = new BufferedImage(prefSize.width,
 				this.editorPane.getPreferredSize().height, 2);
-		Graphics graphics = img.getGraphics();
-		graphics.setColor(Color.white);
+		Graphics2D graphics = img.createGraphics();
 		this.editorPane.setSize(prefSize);
 		this.editorPane.paint(graphics);
 		return img;

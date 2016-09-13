@@ -74,7 +74,8 @@ public class HtmlToImage {
 	            imageGenerator.loadHtml(html);
 	            imageGenerator.saveAsImage(outFileImagePath);
 	            
- 
+                
+	            
 	            
 	        } catch (Exception e) {
 	            e.printStackTrace();
