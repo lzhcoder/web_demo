@@ -7,10 +7,12 @@ import java.nio.channels.*;
 import java.util.*;
 
 
-
-public class MultiPortEcho
-
-{
+/**
+ * 选择器和异步IO：通过选择器来提高多路复用
+ * @author lzh
+ *
+ */
+public class MultiPortEcho{
 
   private int ports[];
 
