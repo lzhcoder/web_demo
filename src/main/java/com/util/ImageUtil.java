@@ -589,7 +589,6 @@ private String generatorSmallFileName(String name) {
             int w = b.getWidth();  
             int h = b.getHeight();  
               
-  
             g = d.createGraphics();  
             g.drawImage(b, 100, 10, w, h, null);  
             g.dispose();  

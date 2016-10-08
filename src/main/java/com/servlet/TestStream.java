@@ -1,12 +1,13 @@
 package com.servlet;
 
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.io.PrintWriter;
+import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLConnection;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
@@ -60,27 +61,63 @@ public class TestStream extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		 
-		 //创建一个新的URL实例url
-		 URL url = new URL("http://localhost/uploadFile/replaceFile");
-		 //根据url建立连接
-		 URLConnection con = url.openConnection();
-		 
-		 //设置该连接可写
-		 con.setDoOutput(true);
-		 //禁用cache
-		 con.setUseCaches(false);
-		 OutputStream outs=con.getOutputStream();
-      	
+//		 //创建一个新的URL实例url
+//		 URL url = new URL("http://localhost/uploadFile/replaceFile");
+//		 //根据url建立连接
+//		 URLConnection con = url.openConnection();
+//		 
+//		 //设置该连接可写
+//		 con.setDoOutput(true);
+//		 //禁用cache
+//		 con.setUseCaches(false);
+//		 OutputStream outs=con.getOutputStream();
+//      	
+//         URL u = new URL("http://localhost/uploadFile/get?id=123");
+//         ByteArrayOutputStream os=new ByteArrayOutputStream();
+//         BufferedImage imageOrigin = ImageIO.read(u);
+//          
+//         ImageIO.write(imageOrigin, "png", os); //利用ImageIO类提供的write方法，将bi以png图片的数据模式写入流。
+//         byte b[]=os.toByteArray();
+//         outs.write(b);
+//         outs.close();
+//         
+//         url.openStream();
+         
+		
+		 URL url = new URL("http://localhost/uploadFile/replaceFile?id=203");
+         HttpURLConnection conn = (HttpURLConnection)url.openConnection();  
+         // 发送POST请求必须设置如下两行  
+
+         conn.setDoOutput(true);  
+         conn.setUseCaches(false);  
+         conn.setRequestMethod("POST");  
+         conn.setRequestProperty("Content-Type","text/html");  
+         conn.setRequestProperty("Cache-Control","no-cache");  
+         conn.setRequestProperty("Charsert", "UTF-8");   
+         conn.connect();  
+         conn.setConnectTimeout(10000);  
+         OutputStream out =conn.getOutputStream();  
+
          URL u = new URL("http://localhost/uploadFile/get?id=123");
          ByteArrayOutputStream os=new ByteArrayOutputStream();
          BufferedImage imageOrigin = ImageIO.read(u);
-          
+        
          ImageIO.write(imageOrigin, "png", os); //利用ImageIO类提供的write方法，将bi以png图片的数据模式写入流。
          byte b[]=os.toByteArray();
-         outs.write(b);
-         outs.close();
-         url.openStream();
-         
+ 
+         ByteArrayInputStream in   = new ByteArrayInputStream(b); 
+
+         int bytes = 0;  
+         byte[] buffer = new byte[1024];  
+         while ((bytes = in.read(buffer)) != -1) {  
+             out.write(buffer, 0, bytes);  
+         }  
+         in.close();  
+         out.flush();  
+         out.close();   
+    
+         conn.getInputStream();  
+         conn.disconnect();  
 	}
 
 	/**
