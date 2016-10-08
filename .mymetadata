@@ -3,8 +3,8 @@
   type="WEB"
   name="web_demo"
   id="myeclipse.1470719482076"
-  context-root="/web_demo"
-  j2ee-spec="1.7"
+  context-root="/reese"
+  j2ee-spec="6.0"
   archive="web_demo.war">
   <attributes>
     <attribute name="webrootdir" value="src/main/webapp" />
