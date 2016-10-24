@@ -1,4 +1,4 @@
-package com.nio;
+package com.nio.demo;
 
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
