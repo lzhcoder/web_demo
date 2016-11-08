@@ -1,4 +1,4 @@
-package com.nio;
+package com.nio.demo;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
